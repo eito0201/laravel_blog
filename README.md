@@ -20,5 +20,11 @@ $ docker-compose down
 ## Execute container commands
 
 ```bash
-$ docker-compose exec {container_name} bash
+$ docker-compose exec ${CONTAINER_NAME} bash
+```
+
+## Connection for MySQL
+
+```bash
+$ docker-compose exec db bash -c 'mysql -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE}'
 ```
