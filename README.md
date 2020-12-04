@@ -16,3 +16,9 @@ http://127.0.0.1:10080
 # Execute docker-compose down
 $ docker-compose down
 ```
+
+## Execute container commands
+
+```bash
+$ docker-compose exec {container_name} bash
+```
