@@ -13,4 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// 投稿一覧画面
 Route::get('/', 'PostsController@index');
+
+// 投稿詳細画面
+Route::get('/posts/{post}', 'PostsController@show');
