@@ -17,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PostsController@index');
 
 // 投稿詳細画面
-Route::get('/posts/{post}', 'PostsController@show');
+Route::get('/posts/{post}', 'PostsController@show')->where('post', '[0-9]+');
+
+// 新規投稿画面
+Route::get('/posts/create', 'PostsController@create');
+
+// 投稿内容登録
+Route::post('/posts', 'PostsController@store');

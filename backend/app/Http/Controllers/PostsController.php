@@ -12,6 +12,7 @@ class PostsController extends Controller
     {
         // 投稿日時の新しい順に投稿一覧を取得
         $posts = Post::latest()->get();
+
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -19,5 +20,28 @@ class PostsController extends Controller
     public function show(Post $post)
     {
         return view('posts.show', ['post' => $post]);
+    }
+
+    // 新規投稿画面を表示
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    // 投稿内容を登録
+    public function store(Request $request)
+    {
+        // バリデーションチェック
+        $this->validate($request, [
+            'title' => 'required|min:3',
+            'body' => 'required',
+        ]);
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+
+        return redirect('/');
     }
 }
