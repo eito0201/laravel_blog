@@ -24,3 +24,9 @@ Route::get('/posts/create', 'PostsController@create');
 
 // 投稿内容登録
 Route::post('/posts', 'PostsController@store');
+
+// 投稿編集画面
+Route::get('/posts/edit/{post}', 'PostsController@edit');
+
+// 投稿内容更新
+Route::patch('/posts/{post}', 'PostsController@update');

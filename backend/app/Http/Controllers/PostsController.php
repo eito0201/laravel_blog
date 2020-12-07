@@ -44,4 +44,26 @@ class PostsController extends Controller
 
         return redirect('/');
     }
+
+    // 投稿編集画面を表示
+    public function edit(Post $post)
+    {
+        return view('posts.edit', ['post' => $post]);
+    }
+
+    // 投稿内容を更新
+    public function update(Request $request, Post $post)
+    {
+        // バリデーションチェック
+        $this->validate($request, [
+            'title' => 'required|min:3',
+            'body' => 'required',
+        ]);
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+
+        return redirect('/');
+    }
 }
