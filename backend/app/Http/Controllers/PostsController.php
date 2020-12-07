@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Http\Requests\PostRequest;
 
 class PostsController extends Controller
 {
@@ -29,14 +29,8 @@ class PostsController extends Controller
     }
 
     // 投稿内容を登録
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        // バリデーションチェック
-        $this->validate($request, [
-            'title' => 'required|min:3',
-            'body' => 'required',
-        ]);
-
         $post = new Post();
         $post->title = $request->title;
         $post->body = $request->body;
@@ -52,14 +46,8 @@ class PostsController extends Controller
     }
 
     // 投稿内容を更新
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-        // バリデーションチェック
-        $this->validate($request, [
-            'title' => 'required|min:3',
-            'body' => 'required',
-        ]);
-
         $post->title = $request->title;
         $post->body = $request->body;
         $post->save();
