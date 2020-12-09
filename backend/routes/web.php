@@ -30,3 +30,6 @@ Route::get('/posts/edit/{post}', 'PostsController@edit');
 
 // 投稿内容更新
 Route::patch('/posts/{post}', 'PostsController@update');
+
+// 投稿内容削除
+Route::delete('/posts/{post}', 'PostsController@destroy');

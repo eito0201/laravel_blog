@@ -54,4 +54,11 @@ class PostsController extends Controller
 
         return redirect('/');
     }
+
+    // 投稿内容を削除
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return redirect('/');
+    }
 }
