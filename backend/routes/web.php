@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * 投稿機能のルーティング
+ */
 // 投稿一覧画面
 Route::get('/', 'PostsController@index');
 
@@ -33,3 +36,9 @@ Route::patch('/posts/{post}', 'PostsController@update');
 
 // 投稿内容削除
 Route::delete('/posts/{post}', 'PostsController@destroy');
+
+/**
+ * コメント機能のルーティング
+ */
+// コメント登録
+Route::post('/posts/{post}/comments', 'CommentsController@store');
