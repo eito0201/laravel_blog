@@ -20,13 +20,13 @@ class CreateCommentsTable extends Migration
 
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('post_id');
+            $table->integer('post_id')->unsigned(); // 参照先カラムとデータ型(ここではinteger(4-byte))を合わせる
             $table->string('body');
             $table->timestamps();
             $table->foreign('post_id')
                 ->references('id')
                 ->on('posts')
-                ->cascadeOnDelete();
+                ->onDelete('cascade');
         });
     }
 
