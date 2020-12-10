@@ -37,8 +37,12 @@ Route::patch('/posts/{post}', 'PostsController@update');
 // 投稿内容削除
 Route::delete('/posts/{post}', 'PostsController@destroy');
 
+
 /**
  * コメント機能のルーティング
  */
 // コメント登録
 Route::post('/posts/{post}/comments', 'CommentsController@store');
+
+// コメント削除
+Route::delete('/posts/{post}/comments/{comment}', 'CommentsController@destroy');
